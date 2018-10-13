@@ -1,5 +1,5 @@
 class Agent {
-  int state;
+  int state, next_state;
   
   Agent() {
     if (random(1.0) < 0.1) {
@@ -10,13 +10,18 @@ class Agent {
   }
   
   void step(int ns) {
+    next_state = state;
     if (state == 0 && ns == 3) {
-      state = 1;
+      next_state = 1;
     } else {
       if (state == 1 && (ns < 2 || ns > 3)) {
-        state = 0;
+        next_state = 0;
       }
     }
+  }
+  
+  void advance() {
+    state = next_state;
   }
   
   void draw(int i, int j) {
@@ -69,6 +74,12 @@ void draw() {
       }
       
       a[i][j].step(ns);
+    }
+  }
+  
+  for (int i = 0; i < 20; i++) {
+    for (int j = 0; j < 20; j++) {
+      a[i][j].advance();
     }
   }
   
