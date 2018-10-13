@@ -66,7 +66,7 @@ void draw() {
           if (i+k >= 0 && i+k < 20 && j+l >= 0 && j+l < 20) {
             
             // count neighbors that are on
-            if (a[i+k][j+l].state == 1) {
+            if (a[i+k][j+l].state == 1 && !(k==0 && l == 0)) {
               ns = ns + 1;
             }
           }
